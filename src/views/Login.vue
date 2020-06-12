@@ -30,7 +30,7 @@
                         >
                     </fieldset>
                     <button @click="login()" class="btn btn-lg btn-primary pull-xs-right">
-                        Sign up
+                        Sign in
                     </button>
                 </form>
             </div>
@@ -45,7 +45,7 @@ import { Vue, Component } from 'vue-property-decorator'
 import users from '@/store/modules/users'
 
 @Component
-export default class extends Vue {
+export default class Login extends Vue {
     email = ''
     password = ''
 
@@ -54,7 +54,6 @@ export default class extends Vue {
             email: this.email,
             password: this.password
         })
-        console.log(`Login.vue - 52 - login with email = ${this.email}`);
     }
 }
 </script>

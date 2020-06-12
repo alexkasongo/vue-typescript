@@ -9,15 +9,19 @@ export function setJWT(jwt: string) {
     conduitApi.defaults.headers.common["Authorization"] = `Token ${jwt}`
 }
 
-export function clearJWT( ) {
+// remove jwt auth token
+export function clearJWT() {
     delete conduitApi.defaults.headers.common["Authorization"] 
 }
 
+// Login user
 export async function loginUser(user: UserSubmit): Promise<UserResponse|undefined> {
+    console.log(`api.ts - 19 - variable`, user);
     try {
-        const response = await axios.post('/users/login', {
+        const response = await conduitApi.post('/users/login', {
             user
         })
+        console.log(`api.ts - 23 - variable`, user);
         return (response.data as UserResponse)
     } catch(e) {
         console.error(e)

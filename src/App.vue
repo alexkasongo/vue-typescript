@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <AppFooter/>
-    <router-view/>
     <AppNavbar/>
+    <router-view/>
+    <AppFooter/>
   </div>
 </template>
 
@@ -16,7 +16,8 @@ import AppNavbar from '@/components/AppNavbar.vue'
  */
 @Component({
   components: {
-    AppFooter, AppNavbar
+    AppFooter, 
+    AppNavbar
   }
 })
 export default class App extends Vue {

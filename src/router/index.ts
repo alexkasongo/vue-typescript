@@ -24,12 +24,7 @@ Vue.use(VueRouter)
     path: '/settings',
     name: 'settings',
     component: () => import('@/views/Settings.vue')
-  },
-  {
-    path: '/settings',
-    name: 'settings',
-    component: () => import('@/views/Settings.vue')
-  },
+  }
 ]
 
 const router = new VueRouter({
