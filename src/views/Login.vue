@@ -30,7 +30,7 @@
                         >
                     </fieldset>
                     <button @click="login()" class="btn btn-lg btn-primary pull-xs-right">
-                        Sign in
+                        Sign in 
                     </button>
                 </form>
             </div>
@@ -40,7 +40,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import users from '@/store/modules/users'
 

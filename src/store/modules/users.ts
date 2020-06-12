@@ -28,7 +28,7 @@ class UsersModule extends VuexModule {
   setUser(user: User) { this.user = user}
 
   get username() {
-    return this.user && this.user.username || null
+    return this.user
   }
 
   @Action({commit: 'setUser'})

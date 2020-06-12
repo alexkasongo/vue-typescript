@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { UserSubmit, UserResponse } from './models';
+import { UserSubmit, UserResponse, ArticlesResponse } from './models';
 
 export const conduitApi = axios.create({
     baseURL: 'https://conduit.productionready.io/api'
@@ -16,7 +16,6 @@ export function clearJWT() {
 
 // Login user
 export async function loginUser(user: UserSubmit): Promise<UserResponse|undefined> {
-    console.log(`api.ts - 19 - variable`, user);
     try {
         const response = await conduitApi.post('/users/login', {
             user
@@ -26,5 +25,12 @@ export async function loginUser(user: UserSubmit): Promise<UserResponse|undefine
     } catch(e) {
         console.error(e)
     }
+}
+
+// posts
+export async function getGlobalFeed() {
+    const response = await conduitApi.get('/articles')
+    return response.data as ArticlesResponse
+    console.log(`api.ts - 33 - variable`, response);
 }
 

@@ -7,12 +7,12 @@
             <!-- Add "active" class when you're on that page" -->
             <a class="nav-link active" href="">Home</a>
           </li>
-          <li class="nav-item">
+          <li v-if="username" class="nav-item">
             <a class="nav-link" href="">
               <i class="ion-compose"></i>&nbsp;New Post
             </a>
           </li>
-          <li class="nav-item">
+          <li v-if="username" class="nav-item">
             <a class="nav-link" href="">
               <i class="ion-gear-a"></i>&nbsp;Settings
             </a>
