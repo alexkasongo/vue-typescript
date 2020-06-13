@@ -8,7 +8,7 @@
                 <p class="text-xs-center">
                 <router-link to="/register">Need an account?</router-link>
 
-                <ul class="error-messages">
+                <ul v-if="loginError" class="error-messages">
                 <li>{{loginError}}</li>
                 </ul>
 
@@ -54,7 +54,7 @@ export default class Login extends Vue {
         users.login({
             email: this.email,
             password: this.password
-        }).then(() => console.log(`Login.vue - 57 - variable`, "hey ale"))
+        }).then(() => this.$router.push('/'))
         .catch((err) => {
             console.error(err)
             this.loginError = "Invalid username or password"
