@@ -26,6 +26,11 @@ Vue.use(VueRouter)
     component: () => import('@/views/Settings.vue')
   },
   {
+    path: '/editor',
+    name: 'editor',
+    component: () => import('@/views/Editor.vue')
+  },
+  {
     path: '/@:username',
     name: 'profile',
     component: () => import('@/views/Profile.vue')

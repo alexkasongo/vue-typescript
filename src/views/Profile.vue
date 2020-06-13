@@ -99,7 +99,7 @@ export default class Profile extends Vue {
         users.loadProfile(this.$route.params.username)
     }
     get profile() {
-        return users.profile
+        return users.user
     }
 }
 </script>

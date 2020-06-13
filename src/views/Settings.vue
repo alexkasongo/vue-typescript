@@ -9,19 +9,42 @@
                 <form>
                 <fieldset>
                     <fieldset class="form-group">
-                        <input class="form-control" type="text" placeholder="URL of profile picture">
+                        <input
+                            v-model="user.image" 
+                            class="form-control" 
+                            type="text" 
+                            placeholder="URL of profile picture"
+                        >
                     </fieldset>
                     <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="text" placeholder="Your Name">
+                        <input 
+                            v-model="user.username"
+                            class="form-control form-control-lg" 
+                            type="text" 
+                            placeholder="Your Name"
+                        >
                     </fieldset>
                     <fieldset class="form-group">
-                        <textarea class="form-control form-control-lg" rows="8" placeholder="Short bio about you"></textarea>
+                        <textarea 
+                            v-model="user.bio"
+                            class="form-control form-control-lg" 
+                            rows="8" 
+                            placeholder="Short bio about you"
+                        ></textarea>
                     </fieldset>
                     <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="text" placeholder="Email">
+                        <input 
+                            class="form-control form-control-lg" 
+                            type="text" 
+                            placeholder="Email"
+                        >
                     </fieldset>
                     <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="password" placeholder="Password">
+                        <input 
+                            class="form-control form-control-lg" 
+                            type="password" 
+                            placeholder="Password"
+                        >
                     </fieldset>
                     <button class="btn btn-lg btn-primary pull-xs-right">
                         Update Settings
@@ -34,3 +57,19 @@
         </div>
     </div>
 </template>
+
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
+import users from '@/store/modules/users'
+
+@Component
+export default class Settings extends Vue {
+    /**
+     * I create a computed property here
+     */
+    get user() {
+      return users.user
+    }
+
+}
+</script>
