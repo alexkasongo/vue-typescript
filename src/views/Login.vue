@@ -8,9 +8,9 @@
                 <p class="text-xs-center">
                 <router-link to="/register">Need an account?</router-link>
 
-                <!-- <ul class="error-messages">
-                <li>That email is already taken</li>
-                </ul> -->
+                <ul class="error-messages">
+                <li>{{loginError}}</li>
+                </ul>
 
                 <form> 
                     <fieldset class="form-group">
@@ -48,11 +48,16 @@ import users from '@/store/modules/users'
 export default class Login extends Vue {
     email = ''
     password = ''
+    loginError = ''
 
     login() {
         users.login({
             email: this.email,
             password: this.password
+        }).then(() => console.log(`Login.vue - 57 - variable`, "hey ale"))
+        .catch((err) => {
+            console.error(err)
+            this.loginError = "Invalid username or password"
         })
     }
 }

@@ -44,6 +44,7 @@ export interface UserSubmit {
  * data types for the response
  */
 export interface UserResponse {
+    User: UserResponse | PromiseLike<UserResponse | undefined> | undefined;
     user: User;
 }
 
@@ -53,6 +54,12 @@ export interface UserResponse {
 export interface ArticlesResponse {
     articles?: (Article)[] | null;
     articlesCount: number;
+}
+/**
+ * user profile
+ */
+export interface ProfileResponse {
+    profile: Profile;
 }
 
   

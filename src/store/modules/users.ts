@@ -1,7 +1,7 @@
 import { VuexModule, Module, getModule, MutationAction, Mutation, Action } from 'vuex-module-decorators'
 import store from '@/store'
 import { User, Profile, UserSubmit } from '../models';
-import { loginUser } from '../api';
+import { loginUser, fetchProfile } from '../api';
 
 /**
  * generate dynamic module
@@ -17,7 +17,7 @@ import { loginUser } from '../api';
  * new way of using vuex modules, defining the like typscript classes
  */
 class UsersModule extends VuexModule {
-  // user and profile objects, will allow you to visit individual profiles of any user
+  // State
   user: User | null = null
   profile: Profile | null = null
 
@@ -25,17 +25,36 @@ class UsersModule extends VuexModule {
    * here we create mutations actions: can mutate whatever we get from a response
    */
   @Mutation
-  setUser(user: User) { this.user = user}
+  setUser(user: User) { 
+    this.user = user
+  }
+  @Mutation
+  setProfile(profile: Profile) {
+    this.profile = profile
+  }
+
+  /**
+   * Getters
+   */
 
   get username() {
     return this.user
   }
 
+  /**
+   * Actions
+   */
+
   @Action({commit: 'setUser'})
   async login(userSubmit: UserSubmit) {
-    const user = await loginUser(userSubmit)
-    // console.log(`users.ts - 30 - variable`, user);
-    return user 
+      const user = await loginUser(userSubmit)
+      return user 
+  }
+  
+  @Action({commit: 'setProfile'})
+  async loadProfile(username: string) {
+    const profile = await fetchProfile(username)
+    return profile
   }
 }
 

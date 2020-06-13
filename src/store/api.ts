@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { UserSubmit, UserResponse, ArticlesResponse } from './models';
+import { UserSubmit, UserResponse, ArticlesResponse, ProfileResponse, Profile } from './models';
 
 export const conduitApi = axios.create({
     baseURL: 'https://conduit.productionready.io/api'
@@ -21,7 +21,8 @@ export async function loginUser(user: UserSubmit): Promise<UserResponse|undefine
             user
         })
         console.log(`api.ts - 23 - variable`, user);
-        return (response.data as UserResponse)
+        // console.log(`api.ts - 24 - variable`, response.data.user);
+        return (response.data.user as UserResponse)
     } catch(e) {
         console.error(e)
     }
@@ -34,3 +35,8 @@ export async function getGlobalFeed() {
     console.log(`api.ts - 33 - variable`, response);
 }
 
+// user profile
+export async function fetchProfile(username: string): Promise<Profile> {
+    const response =  await conduitApi.get(`/profiles/${username}`)
+    return (response.data as ProfileResponse).profile
+}
