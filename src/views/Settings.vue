@@ -34,6 +34,7 @@
                     </fieldset>
                     <fieldset class="form-group">
                         <input 
+                        v-model="user.email"
                             class="form-control form-control-lg" 
                             type="text" 
                             placeholder="Email"
@@ -46,7 +47,7 @@
                             placeholder="Password"
                         >
                     </fieldset>
-                    <button class="btn btn-lg btn-primary pull-xs-right">
+                    <button :click="updateProfile()" class="btn btn-lg btn-primary pull-xs-right">
                         Update Settings
                     </button>
                 </fieldset>
@@ -61,14 +62,33 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import users from '@/store/modules/users'
+import { User } from '../store/models'
 
 @Component
 export default class Settings extends Vue {
     /**
-     * I create a computed property here
+     * I create a computed property here but we cannot set things inside a getter
      */
-    get user() {
-      return users.user
+    // get user() {
+    //   return users.user || {}
+    // }
+
+    /**
+     * use this instead of using a getter
+     */
+    user: Partial<User> = {}
+
+    created() {
+        this.user = users.user || {}
+    }
+
+    async updateProfile() {
+        await users.updateSelfProfile({
+            email: this.user.email,
+            bio: this.user.bio
+            
+        })
+        this.user = users.user || {}
     }
 
 }

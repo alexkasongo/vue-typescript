@@ -1,7 +1,7 @@
 import { VuexModule, Module, getModule, Mutation, Action } from 'vuex-module-decorators'
 import store from '@/store'
-import { User, Profile, UserSubmit } from '../models';
-import { loginUser, fetchProfile } from '../api';
+import { User, Profile, UserSubmit, UserForUpdate } from '../models';
+import { loginUser, fetchProfile, updateUser } from '../api';
 
 /**
  * generate dynamic module
@@ -31,6 +31,12 @@ class UsersModule extends VuexModule {
   @Mutation
   setProfile(profile: Profile) {
     this.profile = profile
+  }
+
+  @Mutation
+  async updateSelfProfile(userUpdateFields: UserForUpdate) {
+    const user = await updateUser(userUpdateFields)
+    return { user }
   }
 
   /**
