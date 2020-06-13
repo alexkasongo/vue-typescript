@@ -1,4 +1,4 @@
-import { VuexModule, Module, getModule, MutationAction, Mutation, Action } from 'vuex-module-decorators'
+import { VuexModule, Module, getModule, Mutation, Action } from 'vuex-module-decorators'
 import store from '@/store'
 import { User, Profile, UserSubmit } from '../models';
 import { loginUser, fetchProfile } from '../api';

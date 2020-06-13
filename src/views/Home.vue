@@ -68,8 +68,8 @@ export default class Login extends Vue {
     feed: Article[] = []
 
     created() {
-        articles.refreshGlobalFeed().then(() => {
-            this.feed = articles.globalFeed
+        articles.refreshFeed('global').then(() => {
+            this.feed = articles.feed
         })
     }
 }
