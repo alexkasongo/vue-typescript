@@ -52,5 +52,5 @@ export async function fetchUser(): Promise<User> {
 // update user settings
 export async function updateUser(user: UserForUpdate): Promise<User> {
     const response = await conduitApi.put('/user', user)
-    return (response.data as User).user
+    return (response.data as User)
 }
