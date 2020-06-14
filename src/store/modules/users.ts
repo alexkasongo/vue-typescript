@@ -1,7 +1,7 @@
 import { VuexModule, Module, getModule, Mutation, Action } from 'vuex-module-decorators'
 import store from '@/store'
 import { User, Profile, UserSubmit, UserForUpdate } from '../models';
-import { loginUser, fetchProfile, updateUser } from '../api';
+import { loginUser, fetchProfile, updateUser, setJWT } from '../api';
 
 /**
  * generate dynamic module
@@ -54,6 +54,7 @@ class UsersModule extends VuexModule {
   @Action({commit: 'setUser'})
   async login(userSubmit: UserSubmit) {
       const user = await loginUser(userSubmit)
+      // setJWT(user.token)
       return user 
   }
   

@@ -47,7 +47,7 @@
                             placeholder="Password"
                         >
                     </fieldset>
-                    <button :click="updateProfile()" class="btn btn-lg btn-primary pull-xs-right">
+                    <button @click="updateProfile()" class="btn btn-lg btn-primary pull-xs-right">
                         Update Settings
                     </button>
                 </fieldset>
