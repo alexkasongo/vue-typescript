@@ -82,14 +82,14 @@ export default class Settings extends Vue {
         this.user = users.user || {}
     }
 
-    async updateProfile() {
-        await users.updateSelfProfile({
-            email: this.user.email,
-            bio: this.user.bio
+    // async updateProfile() {
+    //     await users.updateSelfProfile({
+    //         email: this.user.email,
+    //         bio: this.user.bio
             
-        })
-        this.user = users.user || {}
-    }
+    //     })
+    //     this.user = users.user || {}
+    // }
 
 }
 </script>

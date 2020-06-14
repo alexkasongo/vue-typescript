@@ -44,13 +44,13 @@ export async function fetchProfile(username: string): Promise<Profile> {
     return (response.data as ProfileResponse).profile
 }
 // fetch user
-export async function fetchUser(): Promise<User> {
-    const response =  await conduitApi.get(`/user`)
-    return (response.data as ProfileResponse).user
-}
+// export async function fetchUser(): Promise<User> {
+//     const response =  await conduitApi.get(`/user`)
+//     return (response.data as ProfileResponse).user
+// }
 
 // update user settings
-export async function updateUser(user: UserForUpdate): Promise<User> {
-    const response = await conduitApi.put('/user', user)
-    return (response.data as User)
-}
+// export async function updateUser(user: UserForUpdate): Promise<User> {
+//     const response = await conduitApi.put('/user', user)
+//     return (response.data as User).user
+// }
