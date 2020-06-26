@@ -2,7 +2,6 @@ import { VuexModule, Module, getModule, Mutation, Action } from 'vuex-module-dec
 import store from '@/store'
 import { User, Profile, UserSubmit, UserForUpdate } from '../models';
 import { loginUser, fetchProfile } from '../api';
-// import { loginUser, fetchProfile, updateUser } from '../api';
 
 /**
  * generate dynamic module
